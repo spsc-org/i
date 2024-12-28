@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Item Card</title>
+    <style>
+        :root {
+            --border-radius: 8px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 16px;
+            background-color: #f9fafb;
+
+        }
+
+        .bg-in{
+            background-color: #ffff5e;
+        }
+        .bg-nn{
+            background-color: #ffcc5b;
+        }
+        .bg-ps{
+            background-color: #56dcff;
+        }
+
+        .card {
+background-color: #dcd9d9;
+            border-radius: var(--border-radius);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .card-header {
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .card-title {
+
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .info-grid-rowspan {
+            display: grid;
+            grid-template-columns: 1fr;  /* Changed to always be 1 column */
+            gap: 20px;
+            margin: 20px 0;  /* Added margin for better spacing */
+
+            border-radius: var(--border-radius);  /* Added rounded corners */
+        }
+
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .info-value {
+            font-size: 1rem;
+
+        }
+
+
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+
+            .card {
+                padding: 16px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="card ">
+    <div class="card-header bg-in">
+        <h1 class="card-title"> (інвентар)</h1>
+    </div>
+
+
+    <div class="info-grid-rowspan">
+        <div class="info-item">
+            <span class="info-label">Caption</span>
+            <span class="info-value">ESET Endpoint</span>
+        </div>
+    </div>
+
+
+    <div class="info-grid">
+
+        <div class="info-item">
+            <span class="info-label">Inventory Number</span>
+            <span class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Type</span>
+            <span class="info-value">ПЗ</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Serial Number</span>
+            <span class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Location</span>
+            <span class="info-value">ЗП</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Cost</span>
+            <span class="info-value">-</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Amount</span>
+            <span class="info-value">1</span>
+        </div>
+    </div>
+
+    <div class="info-grid-rowspan">
+        <div class="info-item">
+            <span class="info-label">Details</span>
+            <span class="info-value">ESET Endpoint Antivirus</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Invoice</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Comment</span>
+            <span class="info-value">onLine</span>
+        </div>
+    </div>
+
+    <div class="info-grid" style="margin-top: 20px;">
+
+        <div class="info-item">
+            <span class="info-label">Bailee User Id</span>
+            <span class="info-value">МЮ</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Created User Id</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Responsible User Id</span>
+            <span class="info-value">НД</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Created At</span>
+            <span class="info-value">2023-05-01 18:29:00</span>
+        </div>
+
+        <div class="info-item">
+            <span class="info-label">Updated At</span>
+            <span class="info-value">2023-09-13 10:59:34</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Deleted At</span>
+            <span class="info-value">-</span>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
