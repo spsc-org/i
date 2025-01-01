@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Item Card</title>
+    <!-- Add Font Awesome CDN link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --border-radius: 8px;
@@ -81,7 +84,20 @@ background-color: #dcd9d9;
             font-size: 1rem;
 
         }
+        /* Скрыть блоки по умолчанию */
+        .additional {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px); /* Сдвиг вниз */
+            transition: opacity 1.5s ease, transform 1.5s ease; /* Плавное изменение */
+        }
 
+        /* Класс для показа блока с анимацией */
+        .additional.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0); /* Возвращаем в исходное положение */
+        }
 
 
         @media (max-width: 640px) {
@@ -99,6 +115,26 @@ background-color: #dcd9d9;
             }
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем наличие значения в localStorage по ключу 'key'
+            if (localStorage.getItem('key')) {
+                // Если значение найдено, показываем элемент с классом .additional
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    // Добавляем класс .show для анимации
+                    element.classList.add('show');
+                });
+            } else {
+                // Если значения нет, скрываем элементы с классом .additional
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    element.classList.remove('show');
+                });
+            }
+        });
+
+    </script>
+
 </head>
 <body>
 <div class="card ">
@@ -153,11 +189,11 @@ background-color: #dcd9d9;
             <span class="info-label">Details</span>
             <span class="info-value">Автоматизоване робоче місце типу 4 ________________________ XEON/2+1/ssd64G/int/NoOS</span>
         </div>
-        <div class="info-item">
+        <div class="info-item additional">
             <span class="info-label">Invoice</span>
             <span class="info-value">-</span>
         </div>
-        <div class="info-item">
+        <div class="info-item additional">
             <span class="info-label">Comment</span>
             <span class="info-value">-</span>
         </div>
@@ -167,7 +203,7 @@ background-color: #dcd9d9;
 
         <div class="info-item">
             <span class="info-label">Bailee User Id</span>
-            <span class="info-value">МЮА</span>
+            <span class="info-value">МЮ</span>
         </div>
         <div class="info-item">
             <span class="info-label">Created User Id</span>
@@ -175,7 +211,7 @@ background-color: #dcd9d9;
         </div>
         <div class="info-item">
             <span class="info-label">Responsible User Id</span>
-            <span class="info-value">МЮА</span>
+            <span class="info-value">МЮ</span>
         </div>
         <div class="info-item">
             <span class="info-label">Created At</span>

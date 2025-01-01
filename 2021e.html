@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Item Card</title>
+    <!-- Add Font Awesome CDN link here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --border-radius: 8px;
@@ -81,7 +84,20 @@ background-color: #dcd9d9;
             font-size: 1rem;
 
         }
+        /* Скрыть блоки по умолчанию */
+        .additional {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px); /* Сдвиг вниз */
+            transition: opacity 1.5s ease, transform 1.5s ease; /* Плавное изменение */
+        }
 
+        /* Класс для показа блока с анимацией */
+        .additional.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0); /* Возвращаем в исходное положение */
+        }
 
 
         @media (max-width: 640px) {
@@ -99,11 +115,31 @@ background-color: #dcd9d9;
             }
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Проверяем наличие значения в localStorage по ключу 'key'
+            if (localStorage.getItem('key')) {
+                // Если значение найдено, показываем элемент с классом .additional
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    // Добавляем класс .show для анимации
+                    element.classList.add('show');
+                });
+            } else {
+                // Если значения нет, скрываем элементы с классом .additional
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    element.classList.remove('show');
+                });
+            }
+        });
+
+    </script>
+
 </head>
 <body>
 <div class="card ">
     <div class="card-header bg-nn">
-        <h1 class="card-title">1515----------5 (номенклатура)</h1>
+        <h1 class="card-title">1515---------- (номенклатура)</h1>
     </div>
 
 
@@ -119,7 +155,7 @@ background-color: #dcd9d9;
 
         <div class="info-item">
             <span class="info-label">Inventory Number</span>
-            <span class="info-value">1515----------5</span>
+            <span class="info-value">1515----------</span>
         </div>
 
         <div class="info-item">
@@ -134,7 +170,7 @@ background-color: #dcd9d9;
 
         <div class="info-item">
             <span class="info-label">Location</span>
-            <span class="info-value">Склад</span>
+            <span class="info-value">к.108</span>
         </div>
 
         <div class="info-item">
@@ -153,11 +189,11 @@ background-color: #dcd9d9;
             <span class="info-label">Details</span>
             <span class="info-value">Мережевий адаптер (Гігабітний мережевий адаптер) TP-LINK UE300 1xGE, USB3.0</span>
         </div>
-        <div class="info-item">
+        <div class="info-item additional">
             <span class="info-label">Invoice</span>
             <span class="info-value">-</span>
         </div>
-        <div class="info-item">
+        <div class="info-item additional">
             <span class="info-label">Comment</span>
             <span class="info-value">-</span>
         </div>
@@ -167,7 +203,7 @@ background-color: #dcd9d9;
 
         <div class="info-item">
             <span class="info-label">Bailee User Id</span>
-            <span class="info-value">-</span>
+            <span class="info-value">ДА</span>
         </div>
         <div class="info-item">
             <span class="info-label">Created User Id</span>
@@ -184,7 +220,7 @@ background-color: #dcd9d9;
 
         <div class="info-item">
             <span class="info-label">Updated At</span>
-            <span class="info-value">2024-12-30 18:27:29</span>
+            <span class="info-value">2024-10-25 12:26:54</span>
         </div>
         <div class="info-item">
             <span class="info-label">Deleted At</span>
