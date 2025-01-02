@@ -6,116 +6,8 @@
     <title>Inventory Item Card</title>
     <!-- Add Font Awesome CDN link here -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root {
-            --border-radius: 8px;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.5;
-            margin: 0;
-            padding: 16px;
-            background-color: #f9fafb;
-
-        }
-
-        .bg-in{
-            background-color: #ffff5e;
-        }
-        .bg-nn{
-            background-color: #ffcc5b;
-        }
-        .bg-ps{
-            background-color: #56dcff;
-        }
-
-        .card {
-background-color: #dcd9d9;
-            border-radius: var(--border-radius);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            padding: 24px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .card-header {
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .card-title {
-
-            margin: 0;
-            font-size: 1.5rem;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .info-grid-rowspan {
-            display: grid;
-            grid-template-columns: 1fr;  /* Changed to always be 1 column */
-            gap: 20px;
-            margin: 20px 0;  /* Added margin for better spacing */
-
-            border-radius: var(--border-radius);  /* Added rounded corners */
-        }
-
-
-        .info-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .info-label {
-            font-size: 0.875rem;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        .info-value {
-            font-size: 1rem;
-
-        }
-        /* Скрыть блоки по умолчанию */
-        .additional {
-            display: none;
-            opacity: 0;
-            transform: translateY(20px); /* Сдвиг вниз */
-            transition: opacity 1.5s ease, transform 1.5s ease; /* Плавное изменение */
-        }
-
-        /* Класс для показа блока с анимацией */
-        .additional.show {
-            display: block;
-            opacity: 1;
-            transform: translateY(0); /* Возвращаем в исходное положение */
-        }
-
-
-        @media (max-width: 640px) {
-            body {
-                padding: 12px;
-            }
-            .card {
-                padding: 16px;
-            }
-            .info-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-        }
-    </style>
-
+    <link rel="stylesheet" href="main.css">
     <script src="aes.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Проверяем наличие значения в localStorage по ключу 'key'
@@ -124,6 +16,11 @@ background-color: #dcd9d9;
                 document.querySelectorAll('.additional').forEach(function(element) {
                     // Добавляем класс .show для анимации
                     element.classList.add('show');
+                });
+                document.querySelectorAll('.additional span.encrypted').forEach(function(element) {
+
+                    console.log(element)
+
                 });
             } else {
                 // Если значения нет, скрываем элементы с классом .additional
@@ -189,12 +86,11 @@ background-color: #dcd9d9;
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Накладна</span>
-
-            <span class="info-value">247b6ab9d6ba75742593db70b4916f31Hk6H0tsGsHoLdEPNLt1IdA==</span>
+            <span class="info-value encrypted">a845847b2277b12964b5d0b552442078Pb0qHMg0lszxmglbEBfDDQ==</span>
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Коментар</span>
-            <span class="info-value">e8b665487482f43d9e37e2f9213f671dQ7xOTpZT9jhCLtVGlHQHDAi5idMm9ul+QOeHYOUva0o=</span>
+            <span class="info-value encrypted">4e3de798e1197c7996309a94839aa9eao3YDcFfhj0LeXAQ1fibIVqJ++BybjWjZ3sDj5BpTDAU=</span>
         </div>
     </div>
 
