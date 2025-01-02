@@ -15,27 +15,61 @@
             font-size: 18px;
             padding: 10px;
             border: 1px solid;
+            display: inline-block;
         }
-
+        .message.success {
+            color: green;
+            border-color: green;
+        }
+        .message.error {
+            color: red;
+            border-color: red;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            width: 80%;
+            max-width: 400px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 <h1>Добавление PassKey в localStorage</h1>
+<input type="text" id="passKeyInput" placeholder="Введите ключ" />
+<br>
 <button onclick="addPassKey()">Добавить PassKey</button>
 <div id="message" class="message"></div>
 
 <script>
     function addPassKey() {
+        const inputElement = document.getElementById("passKeyInput");
+        const passKey = inputElement.value.trim();
+
+        if (passKey === "") {
+            document.getElementById("message").textContent = "Ключ не может быть пустым!";
+            document.getElementById("message").className = "message error";
+            return;
+        }
+
         try {
             // Добавление PassKey в localStorage
-            localStorage.setItem("key", "d7sd7f78sd8f87sgd7sd8f8sdf0hj9k0hj9k0hj9k");
+            localStorage.setItem("key", passKey);
+
+            // Очистка поля ввода
+            inputElement.value = "";
 
             // Вывод сообщения об успехе
-            document.getElementById("message").textContent = "key успешно добавлен в localStorage!";
+            document.getElementById("message").textContent = "Ключ успешно добавлен в localStorage!";
             document.getElementById("message").className = "message success";
         } catch (error) {
             // Вывод сообщения об ошибке
-            document.getElementById("message").textContent = "Ошибка при добавлении key в localStorage!";
+            document.getElementById("message").textContent = "Ошибка при добавлении ключа в localStorage!";
             document.getElementById("message").className = "message error";
         }
     }
