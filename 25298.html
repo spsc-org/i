@@ -19,7 +19,10 @@
                 });
                 document.querySelectorAll('.additional span.encrypted').forEach(function(element) {
 
-                    console.log(element)
+                    EncryptionHelper.decrypt(element.innerHTML, localStorage.getItem('key')).then(plaintext => {
+                        console.log(plaintext);
+                    });
+                  //  element.innerHTML=encr
 
                 });
             } else {
@@ -86,11 +89,11 @@
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Накладна</span>
-            <span class="info-value encrypted">7a331bb509acebf0de1318ea769f90d7Nrpw9r/+7iHArXBk+FG4Bg==</span>
+            <span class="info-value encrypted">0cb705f888e9275e16e49c2fd6afebf5BWc6Gk0nXc3kALmt9XFVZw==</span>
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Коментар</span>
-            <span class="info-value encrypted">3e1d74baa60578270c38d613ff27d876nd7mfsb65XFTUVqwICXcyA==</span>
+            <span class="info-value encrypted">07476481a75a0016e15b82e33c6473dfx2pG3pfg1IyvFS10BYPZ6w==</span>
         </div>
     </div>
 
