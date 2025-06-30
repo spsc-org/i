@@ -4,85 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Item Card</title>
-    <!-- Add Font Awesome CDN link here -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
     <script src="aes.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем наличие значения в localStorage по ключу 'key'
             if (localStorage.getItem('key')) {
-                // Если значение найдено, показываем элемент с классом .additional
                 document.querySelectorAll('.additional').forEach(function(element) {
-                    // Добавляем класс .show для анимации
                     element.classList.add('show');
                 });
                 document.querySelectorAll('.additional span.encrypted').forEach(function(element) {
-
                     EncryptionHelper.decrypt(element.innerHTML, localStorage.getItem('key')).then(plaintext => {
                         element.innerHTML=plaintext
-                     //  console.log(plaintext);
                     });
-
-
                 });
             } else {
-                // Если значения нет, скрываем элементы с классом .additional
                 document.querySelectorAll('.additional').forEach(function(element) {
                     element.classList.remove('show');
                 });
             }
         });
-
     </script>
-
 </head>
 <body>
 <div class="card">
     <div class="card-header bg-nn">
         <h1 class="card-title">15151005481.3 (номенклатура)</h1>
     </div>
-
     <div class="info-grid-rowspan">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-tag"></i> Коротка назва</span>
             <span class="info-value">DM DC-DC 15W Csr Power</span>
         </div>
     </div>
-
     <div class="info-grid">
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-hashtag"></i> Номер</span>
             <span class="info-value">15151005481.3</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-box"></i> Тип</span>
             <span class="info-value">Блок живлення</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-id-card"></i> Серійний номер</span>
             <span class="info-value">-</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-map-marker-alt"></i> Розміщення</span>
             <span class="info-value">Склад</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-dollar-sign"></i> Вартість</span>
             <span class="info-value">435</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-cogs"></i> Кількість</span>
             <span class="info-value">-</span>
         </div>
     </div>
-
     <div class="info-grid-rowspan">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-info-circle"></i> Повна назва</span>
@@ -90,14 +70,13 @@
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Накладна</span>
-            <span class="info-value encrypted">524330c599b267d53dd3f89ef9e55f073MpW+rWrj3aYPdFaIXml9w==</span>
+            <span class="info-value encrypted">5631a1180ac097c29b9a7dac115c9618MifQ8RYarDLPiXztkoiaMQ==</span>
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Коментар</span>
-            <span class="info-value encrypted">d94e974187ccd92bc2ec9900292876feGBe2aqnXv7lmibZ6vEXHDw==</span>
+            <span class="info-value encrypted">83605c167dc2e39a4fd6d9e823d96b45bIMHDVZFtFwpVTG9n71gLA==</span>
         </div>
     </div>
-
     <div class="info-grid" style="margin-top: 20px;">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-user"></i> Відповідальний</span>
@@ -126,9 +105,4 @@
     </div>
 </div>
 </body>
-
 </html>
-
-
-
-

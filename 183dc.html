@@ -4,85 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Item Card</title>
-    <!-- Add Font Awesome CDN link here -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="main.css">
     <script src="aes.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Проверяем наличие значения в localStorage по ключу 'key'
             if (localStorage.getItem('key')) {
-                // Если значение найдено, показываем элемент с классом .additional
                 document.querySelectorAll('.additional').forEach(function(element) {
-                    // Добавляем класс .show для анимации
                     element.classList.add('show');
                 });
                 document.querySelectorAll('.additional span.encrypted').forEach(function(element) {
-
                     EncryptionHelper.decrypt(element.innerHTML, localStorage.getItem('key')).then(plaintext => {
                         element.innerHTML=plaintext
-                     //  console.log(plaintext);
                     });
-
-
                 });
             } else {
-                // Если значения нет, скрываем элементы с классом .additional
                 document.querySelectorAll('.additional').forEach(function(element) {
                     element.classList.remove('show');
                 });
             }
         });
-
     </script>
-
 </head>
 <body>
 <div class="card">
     <div class="card-header bg-in">
         <h1 class="card-title">1113746067 (інвентар)</h1>
     </div>
-
     <div class="info-grid-rowspan">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-tag"></i> Коротка назва</span>
             <span class="info-value">Lenovo V15 G3 ABA -8+16</span>
         </div>
     </div>
-
     <div class="info-grid">
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-hashtag"></i> Номер</span>
             <span class="info-value">1113746067</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-box"></i> Тип</span>
             <span class="info-value">НОУТБУК</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-id-card"></i> Серійний номер</span>
             <span class="info-value">PF4J3C40</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-map-marker-alt"></i> Розміщення</span>
             <span class="info-value">ЗП</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-dollar-sign"></i> Вартість</span>
             <span class="info-value">1</span>
         </div>
-
         <div class="info-item">
             <span class="info-label"><i class="fas fa-cogs"></i> Кількість</span>
             <span class="info-value">1</span>
         </div>
     </div>
-
     <div class="info-grid-rowspan">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-info-circle"></i> Повна назва</span>
@@ -90,14 +70,13 @@
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Накладна</span>
-            <span class="info-value encrypted">dfb8d66c0ef227db0f6c5b0149b4fe23bGO1uQVlJF2JvbLARz7XIg==</span>
+            <span class="info-value encrypted">1f5b1f15183118d54663b0206e4cb527ujg0JNU0FOxQBWIEjj/FeA==</span>
         </div>
         <div class="info-item additional">
             <span class="info-label"><i class="fas fa-lock-open"></i> Коментар</span>
-            <span class="info-value encrypted">4fd3e827a9151c25b9d921b0f46a7aabX6XlVyUtoot+WtUm+2y4rfBTcv3tx+rhL6ADoggV3saCti7wY+x38xxngsVcB6K8</span>
+            <span class="info-value encrypted">31da32815c0a7e1dceb7823edb114bbfb64uWNicHgOTiGCyd3Xl1++60EskzsimjBtJP2E72BICYTzoXmCz6TSZGFw2XTUISbFhjqd0QzwQxaIjtTQ19OZ6ZH0YBtCD06YkBHJUWnfq+3Qe6Zo1EeIGl2eS45QtXkFj1fRdVr3peGxWU1YR6dsX7YBNl4ion7oldABxaiIKCKdTczf8hIanEiEI9Kl4</span>
         </div>
     </div>
-
     <div class="info-grid" style="margin-top: 20px;">
         <div class="info-item">
             <span class="info-label"><i class="fas fa-user"></i> Відповідальний</span>
@@ -109,7 +88,7 @@
         </div>
         <div class="info-item">
             <span class="info-label"><i class="fas fa-user-shield"></i> Матеріально відповідальний</span>
-            <span class="info-value">МЮ</span>
+            <span class="info-value">МЮА</span>
         </div>
         <div class="info-item">
             <span class="info-label"><i class="fas fa-calendar-plus"></i> Дата створення</span>
@@ -117,7 +96,7 @@
         </div>
         <div class="info-item">
             <span class="info-label"><i class="fas fa-calendar-check"></i> Дата оновлення</span>
-            <span class="info-value">2024-11-07 14:15:59</span>
+            <span class="info-value">2025-01-30 15:24:05</span>
         </div>
         <div class="info-item">
             <span class="info-label"><i class="fas fa-calendar-times"></i> Дата видалення</span>
@@ -126,9 +105,4 @@
     </div>
 </div>
 </body>
-
 </html>
-
-
-
-

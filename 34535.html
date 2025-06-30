@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Item Card</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="main.css">
+    <script src="aes.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('key')) {
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    element.classList.add('show');
+                });
+                document.querySelectorAll('.additional span.encrypted').forEach(function(element) {
+                    EncryptionHelper.decrypt(element.innerHTML, localStorage.getItem('key')).then(plaintext => {
+                        element.innerHTML=plaintext
+                    });
+                });
+            } else {
+                document.querySelectorAll('.additional').forEach(function(element) {
+                    element.classList.remove('show');
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="card">
+    <div class="card-header bg-in">
+        <h1 class="card-title">104818639 (інвентар)</h1>
+    </div>
+    <div class="info-grid-rowspan">
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-tag"></i> Коротка назва</span>
+            <span class="info-value">BenQ GL2250</span>
+        </div>
+    </div>
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-hashtag"></i> Номер</span>
+            <span class="info-value">104818639</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-box"></i> Тип</span>
+            <span class="info-value">МОНІТОР</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-id-card"></i> Серійний номер</span>
+            <span class="info-value">ETHAB01588019</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-map-marker-alt"></i> Розміщення</span>
+            <span class="info-value">Склад</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-dollar-sign"></i> Вартість</span>
+            <span class="info-value">1127</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-cogs"></i> Кількість</span>
+            <span class="info-value">1</span>
+        </div>
+    </div>
+    <div class="info-grid-rowspan">
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-info-circle"></i> Повна назва</span>
+            <span class="info-value">Монiтор BenQ GL2250  21,5&quot;</span>
+        </div>
+        <div class="info-item additional">
+            <span class="info-label"><i class="fas fa-lock-open"></i> Накладна</span>
+            <span class="info-value encrypted">145a2da546fab1b0735591afe4ab32a05M//FlXfRqpzoY7/wt0nfQ==</span>
+        </div>
+        <div class="info-item additional">
+            <span class="info-label"><i class="fas fa-lock-open"></i> Коментар</span>
+            <span class="info-value encrypted">3b7c0b62e3cca5f237d6ab1581aa4c8a7K+3RAe+5Xn8qPu16Beevw==</span>
+        </div>
+    </div>
+    <div class="info-grid" style="margin-top: 20px;">
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-user"></i> Відповідальний</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-user-plus"></i> Створювач</span>
+            <span class="info-value">НД</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-user-shield"></i> Матеріально відповідальний</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-calendar-plus"></i> Дата створення</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-calendar-check"></i> Дата оновлення</span>
+            <span class="info-value">-</span>
+        </div>
+        <div class="info-item">
+            <span class="info-label"><i class="fas fa-calendar-times"></i> Дата видалення</span>
+            <span class="info-value">-</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
