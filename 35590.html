@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SVC  VP-1000-LCD 1000VA</title>
+    <script src="aes.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #eef0f3;
+            min-height: 100vh;
+            padding: 16px 12px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 460px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,.07), 0 8px 32px rgba(0,0,0,.08);
+            overflow: hidden;
+        }
+
+        /* ─── Шапка ─── */
+        .header {
+            padding: 22px 20px 18px;
+        }
+        .header.t-in   { background: #fff8b8; border-bottom: 3px solid #f5c400; }
+        .header.t-nn   { background: #d8f5c0; border-bottom: 3px solid #7bc84a; }
+        .header.t-ps   { background: #c8ecff; border-bottom: 3px solid #0288d1; }
+        .header.t-none { background: #ffffff; border-bottom: 3px solid #e0e0e0; }
+
+        .header-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .6px;
+            padding: 3px 9px;
+            border-radius: 99px;
+            margin-bottom: 10px;
+        }
+        .t-in   .header-badge { background: #f5c400; color: #5c4200; }
+        .t-nn   .header-badge { background: #7bc84a; color: #fff; }
+        .t-ps   .header-badge { background: #0288d1; color: #fff; }
+        .t-none .header-badge { background: #ddd;    color: #666; }
+
+        .header-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.2;
+            word-break: break-word;
+        }
+        .header-sub {
+            margin-top: 5px;
+            font-size: 13px;
+            color: #777;
+        }
+
+        /* ─── Секція ─── */
+        .section {
+            padding: 14px 20px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+        .section:last-child { border-bottom: none; }
+
+        .section-label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .7px;
+            color: #bbb;
+            margin-bottom: 10px;
+        }
+
+        /* ─── Поля ─── */
+        .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; }
+        .fields.full { grid-template-columns: 1fr; }
+
+        .field-label {
+            font-size: 10px;
+            color: #aaa;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+            margin-bottom: 2px;
+        }
+        .field-value {
+            font-size: 14px;
+            font-weight: 500;
+            color: #1a1a1a;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        .field-value.mono {
+            font-family: 'SFMono-Regular', 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 13px;
+            letter-spacing: .4px;
+        }
+        .field-value.empty { color: #d0d0d0; font-weight: 400; }
+
+        /* ─── Захищений блок ─── */
+        .locked-hint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #f7f7f7;
+            border: 1px dashed #ddd;
+            border-radius: 10px;
+            padding: 12px 14px;
+            color: #bbb;
+            font-size: 12px;
+        }
+        .lock-icon { font-size: 18px; }
+
+        .additional { display: none; }
+        .additional.show { display: grid; }
+
+        /* ─── Футер ─── */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            background: #fafafa;
+            font-size: 11px;
+            color: #c0c0c0;
+            border-top: 1px solid #f0f0f0;
+            gap: 8px;
+        }
+        .footer span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var key = localStorage.getItem('key');
+            if (key) {
+                document.querySelectorAll('.locked-hint').forEach(function (el) { el.style.display = 'none'; });
+                document.querySelectorAll('.additional').forEach(function (el) { el.classList.add('show'); });
+                document.querySelectorAll('.additional span.encrypted').forEach(function (el) {
+                    EncryptionHelper.decrypt(el.innerHTML, key).then(function (plain) {
+                        el.innerHTML = plain || '—';
+                    });
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="card">
+
+    
+    <div class="header t-in">
+        <div class="header-badge">інвентар</div>
+        <div class="header-title">SVC  VP-1000-LCD 1000VA</div>
+                    <div class="header-sub">ПБЖ</div>
+            </div>
+
+    
+    <div class="section">
+        <div class="section-label">Ідентифікатори</div>
+        <div class="fields">
+            <div>
+                <div class="field-label">Інв. номер</div>
+                <div class="field-value mono ">
+                    1113750396
+                </div>
+            </div>
+            <div>
+                <div class="field-label">Реєстр. номер</div>
+                <div class="field-value mono empty">
+                    —
+                </div>
+            </div>
+            <div>
+                <div class="field-label">Серійний номер</div>
+                <div class="field-value mono empty">
+                    —
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <div class="section-label">Розміщення</div>
+        <div class="fields">
+            <div>
+                <div class="field-label">Локація</div>
+                <div class="field-value ">Склад</div>
+            </div>
+            <div>
+                <div class="field-label">Вузол</div>
+                <div class="field-value empty"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <div class="section-label">Деталі</div>
+        <div class="fields full">
+            <div>
+                <div class="field-label">Повна назва</div>
+                <div class="field-value ">Джерело безперебійного живлення SVC  VP-1000-LCD 1000VA</div>
+            </div>
+        </div>
+        <div class="fields" style="margin-top:10px;">
+            <div>
+                <div class="field-label">Вартість</div>
+                <div class="field-value ">3120</div>
+            </div>
+            <div>
+                <div class="field-label">Кількість</div>
+                <div class="field-value empty">—</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <div class="section-label">Відповідальні особи</div>
+        <div class="fields full">
+            <div>
+                <div class="field-label">Відповідальний</div>
+                <div class="field-value ">НД</div>
+            </div>
+            <div style="margin-top:8px;">
+                <div class="field-label">МВО</div>
+                <div class="field-value ">НД</div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="section">
+        <div class="section-label">🔒 Захищені дані</div>
+
+        <div class="locked-hint">
+            <span class="lock-icon">🔐</span>
+            <span>Для перегляду введіть ключ у системі</span>
+        </div>
+
+        <div class="additional" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+            <div>
+                <div class="field-label">Накладна</div>
+                <div class="field-value"><span class="encrypted">61b1be47d03de6031bf3103db39f5475OoN92fuQpXdSPtm+t8zX0w==</span></div>
+            </div>
+            <div>
+                <div class="field-label">Коментар</div>
+                <div class="field-value"><span class="encrypted">48c1dfa216b83914687543ac4dd41d79yPoLIm33VQ5LMwmMF3Bs3w==</span></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="footer">
+        <span>створено: —</span>
+        <span>оновлено: —</span>
+    </div>
+
+</div>
+</body>
+</html>
